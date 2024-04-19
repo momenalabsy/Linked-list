@@ -14,11 +14,11 @@ class LinkedList {
     // adds a new node containing value to the end of the list
     let node = this.head;
     while (node) {
-      node = node.nextNode;
       if (node.nextNode == null) {
         node.nextNode = new Node(value);
         return;
       }
+      node = node.nextNode;
     }
   }
 
@@ -49,10 +49,10 @@ class LinkedList {
     // returns the last node in the list
     let node = this.head;
     while (node) {
-      node = node.nextNode;
       if (node.nextNode == null) {
         return node;
       }
+      node = node.nextNode;
     }
   }
 
@@ -76,11 +76,11 @@ class LinkedList {
     //  removes the last element from the list
     let node = this.head;
     while (node) {
-      node = node.nextNode;
       if (node.nextNode.nextNode == null) {
         node.nextNode = null;
         return;
       }
+      node = node.nextNode;
     }
   }
 
@@ -120,11 +120,10 @@ class LinkedList {
     let text = "";
     while (node) {
       text += `( ${node.value} ) -> `;
-      node = node.nextNode;
       if (node.nextNode == null) {
-        text += `( ${node.value} ) -> `;
         return (text += "null");
       }
+      node = node.nextNode;
     }
   }
 
@@ -157,13 +156,13 @@ class LinkedList {
     if (index < 0 || index >= this.size()) {
       throw `Index ${index} out of bounds`;
     }
-
-    let node = this.head;
-    let currentIndex = 0;
     if (index === 0) {
       this.head = node.nextNode;
       return;
     }
+
+    let node = this.head;
+    let currentIndex = 0;
     while (node) {
       if (currentIndex === index - 1) {
         let oldList = node.nextNode.nextNode;
@@ -189,3 +188,6 @@ node3.nextNode = node4;
 node4.nextNode = node5;
 
 let list = new LinkedList(node1);
+
+console.log(list.getTail());
+console.log(list.toString());
